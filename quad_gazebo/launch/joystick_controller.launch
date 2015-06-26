@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <include file="$(find crazyflie_controller)/launch/controller_Uni.launch"/>
+
+  <node name="joystick_controller" pkg="quad_gazebo" type="Joystick_Controller_Gon2" output="screen"  args="$(find sparseRRT)/bin $(find cf_action_controller)/bin">
+  </node>
+
+ </launch>

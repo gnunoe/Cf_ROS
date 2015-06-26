@@ -1,0 +1,50 @@
+/**
+ * @file parameter_reader.hpp
+ * 
+ * @copyright Software License Agreement (BSD License)
+ * Copyright (c) 2014, Rutgers the State University of New Jersey, New Brunswick  
+ * All Rights Reserved.
+ * For a full description see the file named LICENSE.
+ * 
+ * Authors: Zakary Littlefield, Kostas Bekris 
+ * 
+ */
+
+#ifndef SPARSE_PARAMETER_READER
+#define SPARSE_PARAMETER_READER
+
+#include <string>
+
+namespace params
+{
+        double integration_step;
+	std::string stopping_type;
+	unsigned stopping_check;
+	std::string stats_type;
+	unsigned stats_check;
+	bool intermediate_visualization;
+	unsigned min_time_steps;
+	unsigned max_time_steps;
+	int random_seed;
+	double sst_delta_near;
+	double sst_delta_drain;
+	std::string planner;
+	std::string system;
+	double* start_state;
+	double* goal_state;
+	double goal_radius;
+
+
+	//Parameters for image output.
+	double tree_line_width;
+	double solution_line_width;
+	int image_width;
+	int image_height;
+	double node_diameter;
+	double solution_node_diameter;
+}
+
+void read_parameters();
+
+
+#endif

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <include file="$(find cf_2_moveit)/launch/plan_and_execute.launch"/>
+
+  <node name="cf_action_controller" pkg="cf_action_controller" type="actionController" output="screen"  args="$(find cf_action_controller)/bin">
+  </node>
+
+ </launch>
+

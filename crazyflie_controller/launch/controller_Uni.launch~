@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="crazyflieSDK" default="/home/estevez/Documents/Quadcopter_Software/Original_Software/crazyflie_clients_python-master/lib"/>
+  <arg name="uri" default="radio://0/70/2M" />
+  <arg name="joy_dev" default="/dev/input/js0" />
+
+  <node name="joy" pkg="joy" type="joy_node" output="screen" >
+    <param name="dev" value="$(arg joy_dev)" />
+  </node>
+
+  <!-- Note that axis IDs are those from the joystick message plus one, to be able to invert axes by specifiying either positive or negative axis numbers.-->
+  <!-- Axis 2 from joy message thus has to be set as '3' or '-3'(inverted mode) below-->
+  <node name="quadrotor_teleop" pkg="hector_quadrotor_teleop" type="quadrotor_teleop">
+    <remap from="cmd_vel" to="cmd_vel_telop" />
+    <param name="x_axis" value="2"/>
+    <param name="y_axis" value="1"/>
+    <param name="z_axis" value="4"/>
+    <param name="yaw_axis" value="3"/>
+    <param name="x_velocity_max" value="30"/>
+    <param name="y_velocity_max" value="-30"/>
+    <param name="z_velocity_max" value="60000"/>
+    <param name="yaw_velocity_max" value="-200"/>
+    
+    <!--<param name="x_axis" value="5"/>
+    <param name="y_axis" value="4"/>
+    <param name="z_axis" value="2"/>
+    <param name="yaw_axis" value="1"/>
+    <param name="x_velocity_max" value="30"/>
+    <param name="y_velocity_max" value="-30"/>
+    <param name="z_velocity_max" value="60000"/>
+    <param name="yaw_velocity_max" value="-200"/> -->
+  </node>
+
+  <include file="$(find crazyflie)/launch/crazyflieUni.launch">
+    <arg name="crazyflieSDK" value="$(arg crazyflieSDK)" />
+    <arg name="uri" value="$(arg uri)" />
+    <arg name="tf_prefix" value="" />
+    <arg name="roll_trim" value="0.2" />
+    <arg name="pitch_trim" value="0.9" />
+  </include>
+
+  <!-- run vicon bridge -->
+  <!--include file="$(find vicon_bridge)/launch/vicon.launch"/-->
+
+</launch>

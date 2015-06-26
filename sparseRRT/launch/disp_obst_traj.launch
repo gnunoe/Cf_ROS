@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="map"/>
+  <arg name="file_name"/>
+
+  <node name="obstacles" pkg="sparseRRT" type="display_obstacles" output="screen"  args="$(arg map)">  
+  </node>
+
+  <node name="trajectory" pkg="sparseRRT" type="display_trajectory" output="screen"  args="$(find sparseRRT)/bin/ $(arg file_name)" >
+  </node>
+
+</launch>

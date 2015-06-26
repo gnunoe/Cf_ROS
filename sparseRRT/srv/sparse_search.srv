@@ -1,0 +1,8 @@
+float64 x_s
+float64 y_s
+float64 z_s
+float64 x_g
+float64 y_g
+float64 z_g
+---
+int32 done

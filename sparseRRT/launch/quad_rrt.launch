@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="map"/>
+  <arg name="time" default="30"/>
+  <arg name="goalX" default="-1.5"/>
+  <arg name="goalY" default="-2"/>
+  <arg name="goalZ" default="1"/>
+  <arg name="startX" default="1.5"/>
+  <arg name="startY" default="2"/>
+  <arg name="startZ" default="1"/>
+
+
+  <node name="quad_rrt" pkg="sparseRRT" type="quadrotor_rrt" output="screen" args="$(find sparseRRT)/bin $(arg map) $(arg time) $(arg goalX) $(arg goalY) $(arg goalZ) $(arg startX) $(arg startY) $(arg startZ)">  
+  </node>
+
+</launch>
